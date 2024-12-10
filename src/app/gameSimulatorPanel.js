@@ -122,10 +122,21 @@ const GameSimulatorPanel = ({ renderContents, data, globalState, globalMethods }
   })
 
   const timeoutReadRef = useRef(null);
-
+  
+  useEffect(() => {
+    timeoutReadRef.current = {
+      layoutInfo: layoutInfo,
+      deckInfo: deckInfo,
+      gameInfo: gameInfo,
+      roundInfo: roundInfo,
+      opponentSettings: opponentSettings,
+      globalState: globalState,
+    }
+  });
   
   function setLayoutInfo(newLayoutInfo) {
     const cardCount = newLayoutInfo.deckWidth * newLayoutInfo.deckHeight;
+    let deckInfo = timeoutReadRef.current.deckInfo; 
     const needUpdateDeckInfo = (
       cardCount !== deckInfo.playerDeck.length ||
       (newLayoutInfo.hasOpponent && cardCount !== deckInfo.opponentDeck.length) ||
@@ -157,17 +168,6 @@ const GameSimulatorPanel = ({ renderContents, data, globalState, globalMethods }
     }
     rawSetLayoutInfo(newLayoutInfo);
   }
-
-  useEffect(() => {
-    timeoutReadRef.current = {
-      layoutInfo: layoutInfo,
-      deckInfo: deckInfo,
-      gameInfo: gameInfo,
-      roundInfo: roundInfo,
-      opponentSettings: opponentSettings,
-      globalState: globalState,
-    }
-  });
 
   // load cookies
   useEffect(() => {
@@ -292,7 +292,7 @@ const GameSimulatorPanel = ({ renderContents, data, globalState, globalMethods }
       })
       if (flag) {
         setLayoutInfo({
-          ...layoutInfo,
+          ...timeoutReadRef.current.layoutInfo,
           ...updater,
           ...additional
         });

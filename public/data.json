@@ -995,7 +995,23 @@
                 "強欲な獣のムジカ/黄昏フロンティア - 今宵は飄逸なエゴイスト　～ Egoistic Flowers.mp3"
             ],
             "tags": ["憑依華"]
+        },
+        "サニーミルク": {
+            "card": "サニーミルク.png",
+            "music": "东方三月精 ～ Eastern and Little Nature Deity/サニールチルフレクション.mp3",
+            "tags": ["三月精"]
+        },
+        "ルナチャイルド": {
+            "card": "ルナチャイルド.png",
+            "music": "东方三月精 ～ Eastern and Little Nature Deity/夜だから眠れない.mp3",
+            "tags": ["三月精"]
+        },
+        "スターサファイア": {
+            "card": "スターサファイア.png",
+            "music": "东方三月精 ～ Eastern and Little Nature Deity/妖精燦々として.mp3",
+            "tags": ["三月精"]
         }
+
     },
     "sources": {
         "七夕坂夢幻能 ~ Taboo Japan Disentanglement/上海アリス幻樂団 - ひとりぼっちの常陸行路.mp3": "https://upload.thbwiki.cc/8/82/hr12_08.mp3",
@@ -1630,7 +1646,10 @@
         "鳥船遺跡 ～ Trojan Green Asteroid/07. ハルトマンの妖怪少女.mp3": "https://upload.thbwiki.cc/9/99/hr07_07.mp3",
         "鳥船遺跡 ～ Trojan Green Asteroid/08. 天鳥船神社の結界.mp3": "https://upload.thbwiki.cc/5/59/hr07_08.mp3",
         "鳥船遺跡 ～ Trojan Green Asteroid/09. 感情の摩天楼 ～ Cosmic Mind.mp3": "https://upload.thbwiki.cc/d/d0/hr07_09.mp3",
-        "鳥船遺跡 ～ Trojan Green Asteroid/10. 宇宙に浮かぶ幻想郷.mp3": "https://upload.thbwiki.cc/1/14/hr07_10.mp3"
+        "鳥船遺跡 ～ Trojan Green Asteroid/10. 宇宙に浮かぶ幻想郷.mp3": "https://upload.thbwiki.cc/1/14/hr07_10.mp3",
+        "东方三月精 ～ Eastern and Little Nature Deity/サニールチルフレクション.mp3": "https://upload.thbwiki.cc/4/44/EaLND_01.mp3",
+        "东方三月精 ～ Eastern and Little Nature Deity/夜だから眠れない.mp3": "https://upload.thbwiki.cc/f/f9/EaLND_02.mp3",
+        "东方三月精 ～ Eastern and Little Nature Deity/妖精燦々として.mp3": "https://upload.thbwiki.cc/a/af/EaLND_03.mp3"
     },
     "idpresets": {
         "花映冢": {

@@ -132,6 +132,9 @@ function loadMusicPlayerStateCookies(data, getDefaultValue = false) {
       let cookieMusicIds = docCookies.getItem("musicIds");
       if (cookieMusicIds !== null) {
         cookieMusicIds = cookieMusicIds.split(",");
+        if (cookieMusicIds.length !== characters.length) {
+          throw "Invalid musicIds length";
+        }
         let newMusicIds = {}
         cookieMusicIds.forEach((id, index) => {
           let v = parseInt(id);
