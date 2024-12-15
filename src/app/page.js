@@ -1325,6 +1325,12 @@ export default function Home() {
               </Grid>
             </Grid>
           </Paper>
+          <Paper elevation={3} padding={2} className="chinese">
+            <Box padding={1}>
+            出于服务器成本考虑，本网站即将关闭。新版本网站已发布于 <Link href="https://lightbulb128.github.io/touhou-card-player/"> github.io</Link>。
+            新版网站采用 thwiki 作为音乐源，并部署于 github.io，有时存在网络不稳定现象，若遇到问题请使用科学上网访问。您仍可访问<Link href="https://lightbulb128.github.io/touhou-card-player/old">此处</Link>使用老版本 UI。
+            </Box>
+          </Paper>
         </Stack>
       </Grid>
 
