@@ -8,6 +8,8 @@ Well, this one does as the name says.
 
 I am a great fan of Alice Margatroid so I have a button placed at the page top which takes you to Alice's music!
 
+If you want to print the cards, you may look at this [Google Drive Link](https://drive.google.com/drive/folders/1KH6aC5oPLx7pel1fZ1UHxudIUdJSvhru?usp=sharing). This also includes the music pack files.
+
 ## For development
 
 ```bash
