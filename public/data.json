@@ -164,8 +164,8 @@
         "魂魄妖夢": {
             "card": "妖夢.png",
             "music": [
-                "東方妖々夢 ～ Perfect Cherry Blossom/上海アリス幻樂団 - 東方妖々夢　～ Ancient Temple.mp3",
                 "東方妖々夢 ～ Perfect Cherry Blossom/上海アリス幻樂団 - 広有射怪鳥事　～ Till When？.mp3",
+                "東方妖々夢 ～ Perfect Cherry Blossom/上海アリス幻樂団 - 東方妖々夢　～ Ancient Temple.mp3",
                 "東方妖々夢 ～ Perfect Cherry Blossom/上海アリス幻樂団 - アルティメットトゥルース.mp3",
                 "幻想曲抜萃 ～ 東方萃夢想/DayDisc/12. 広有射怪鳥事 ～ Till When？.mp3",
                 "幻想曲抜萃 ～ 東方萃夢想/NightDisc/12. 東方妖々夢 ～ Ancient Temple.mp3",
@@ -1011,6 +1011,11 @@
             "card": "スターサファイア.png",
             "music": "东方三月精 ～ Eastern and Little Nature Deity/妖精燦々として.mp3",
             "tags": ["三月精"]
+        },
+        "绵月丰姬": {
+            "card": "豊姫.png",
+            "music": "東方錦上京 ～ Fossilized Wonders/上海アリス幻樂団 - 綿月のスペルカード　～ 神海戦.mp3",
+            "tags": ["錦上京"]
         }
 
     },
@@ -1651,14 +1656,16 @@
         "鳥船遺跡 ～ Trojan Green Asteroid/10. 宇宙に浮かぶ幻想郷.mp3": "https://upload.thbwiki.cc/1/14/hr07_10.mp3",
         "东方三月精 ～ Eastern and Little Nature Deity/サニールチルフレクション.mp3": "https://upload.thbwiki.cc/4/44/EaLND_01.mp3",
         "东方三月精 ～ Eastern and Little Nature Deity/夜だから眠れない.mp3": "https://upload.thbwiki.cc/f/f9/EaLND_02.mp3",
-        "东方三月精 ～ Eastern and Little Nature Deity/妖精燦々として.mp3": "https://upload.thbwiki.cc/a/af/EaLND_03.mp3"
+        "东方三月精 ～ Eastern and Little Nature Deity/妖精燦々として.mp3": "https://upload.thbwiki.cc/a/af/EaLND_03.mp3",
+        "東方錦上京 ～ Fossilized Wonders/上海アリス幻樂団 - 綿月のスペルカード　～ 神海戦.mp3": "https://upload.thbwiki.cc/e/e3/th20_11.mp3"
     },
     "idpresets": {
         "花映冢": {
             "博麗霊夢": 1,
             "霧雨魔理沙": 1,
             "十六夜咲夜": 2,
-            "射命丸文": 1
+            "射命丸文": 1,
+            "魂魄妖夢": 1
         },
         "兽王园": {
             "博麗霊夢": 2,
