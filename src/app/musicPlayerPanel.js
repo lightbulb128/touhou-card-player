@@ -333,15 +333,16 @@ export default function MusicPlayerPanel({
   }
 
   let currentCharacter = musicPlayerState.currentPlaying;
-  let currentSource = data["sources"][getMusicNameOfCharacter(currentCharacter)];
+  
+  // Check if current character has valid music
+  const hasValidMusic = musicPlayerState.musicIds[currentCharacter] !== -1;
+  
+  let currentSource = hasValidMusic ? data["sources"][getMusicNameOfCharacter(currentCharacter)] : "";
   let playOrder = musicPlayerState.playOrder;
   let currentIndexInPlayOrder = playOrder.indexOf(currentCharacter);
-  let [_nid, nextCharacter] = globalMethods.findNextCharacterInPlaylist(musicPlayerState, currentCharacter);
-  let [_pid, prevCharacter] = globalMethods.findPreviousCharacterInPlaylist(musicPlayerState, currentCharacter);
-  let nextSource = data["sources"][getMusicNameOfCharacter(nextCharacter)];
 
-  let [audioPlayer, prepareAudio] = CachedAudioPlayer({ src: currentSource, onFetched: (src) => {
-    if (src === currentSource) {
+  let audioPlayer = CachedAudioPlayer({ src: currentSource, onFetched: (src) => {
+    if (src === currentSource && hasValidMusic) {
       if (!paused) {
         audioRef.current.play().catch((e) => {
           console.log("Failed to play", e);
@@ -349,22 +350,23 @@ export default function MusicPlayerPanel({
       }
     }
   }, onLoaded: () => {
-    let position = 0;
-    if (optionState.randomPlayPosition) {
-      position = Math.random() * Math.max(audioRef.current.duration - 10, 0);
-    }
-    setAudioState({
-      currentTime: position,
-      duration: audioRef.current.duration,
-    });
-    audioRef.current.currentTime = position;
-    if (!paused) {
-      audioRef.current.play().catch((e) => {
-        console.log("Failed to play", e);
+    if (hasValidMusic) {
+      let position = 0;
+      if (optionState.randomPlayPosition) {
+        position = Math.random() * Math.max(audioRef.current.duration - 10, 0);
+      }
+      setAudioState({
+        currentTime: position,
+        duration: audioRef.current.duration,
       });
+      audioRef.current.currentTime = position;
+      if (!paused) {
+        audioRef.current.play().catch((e) => {
+          console.log("Failed to play", e);
+        });
+      }
     }
   }, globalRefs: globalRefs});
-  prepareAudio(nextSource);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -407,7 +409,7 @@ export default function MusicPlayerPanel({
 
   {
     renderProminents.forEach((character, index) => {
-      let notEmpty = (character === currentCharacter) || (character === nextCharacter) || (character === prevCharacter);
+      let notEmpty = (character === currentCharacter);
       let empty = !notEmpty;
       prominents.push(<TransitionTab key={character} index={counter} value={value} transitionTime={transitionTime}>
         <ProminentCardGroup 
@@ -431,38 +433,45 @@ export default function MusicPlayerPanel({
   }
 
   return <Stack spacing={1} align="center" alignItems="center">
-    <Box width="100%" align="center" alignItems="center">
-      <Box sx={{
-        display: "flex",
-        flexWrap: "nowrap",
-      }} ref={prominentCardGroupContainerRef}
-      >
-        {prominents}
+    {!hasValidMusic ? (
+      <Box width="100%" padding={2}>
+        <Typography>No music available. Please select at least one song in the settings.</Typography>
       </Box>
-    </Box>
-    <PlaySlider 
-      globalState={globalState}
-      globalRefs={globalRefs}
-    ></PlaySlider>
-    <PlayControls
-      onPreviousClick={onPreviousClick}
-      onNextClick={onNextClick}
-      onPauseClick={onPauseClick}
-      globalState={globalState}
-    ></PlayControls>
-    {audioPlayer}
-    <audio ref={audioCountdownRef} src={globalState.optionState.relativeRoot + "Bell3.mp3"}></audio>
-      
-    <Box align="left" width="100%" >
-      <Typography className="chinese">队列中 (单击可选择将其跳过)</Typography>
-    </Box>
-    <QueueCardGroup 
-      data={data}
-      globalState={globalState}
-      containerWidthPixels={layoutInfo.containerWidth}
-      globalMethods={globalMethods}
-    />
-
+    ) : (
+      <>
+        <Box width="100%" align="center" alignItems="center">
+          <Box sx={{
+            display: "flex",
+            flexWrap: "nowrap",
+          }} ref={prominentCardGroupContainerRef}
+          >
+            {prominents}
+          </Box>
+        </Box>
+        <PlaySlider 
+          globalState={globalState}
+          globalRefs={globalRefs}
+        ></PlaySlider>
+        <PlayControls
+          onPreviousClick={onPreviousClick}
+          onNextClick={onNextClick}
+          onPauseClick={onPauseClick}
+          globalState={globalState}
+        ></PlayControls>
+        {audioPlayer}
+        <audio ref={audioCountdownRef} src={globalState.optionState.relativeRoot + "Bell3.mp3"}></audio>
+          
+        <Box align="left" width="100%" >
+          <Typography className="chinese">队列中 (单击可选择将其跳过)</Typography>
+        </Box>
+        <QueueCardGroup 
+          data={data}
+          globalState={globalState}
+          containerWidthPixels={layoutInfo.containerWidth}
+          globalMethods={globalMethods}
+        />
+      </>
+    )}
   </Stack>
 
 }

@@ -169,9 +169,16 @@ const MusicIdSelectPanel = ({data, globalState, globalMethods}) => {
     if (newMusicIds[currentPlaying] === -1) {
       let character = currentPlaying;
       let index = (playOrder.indexOf(character) + 1) % playOrder.length;
-      while (!characterInPlaylist(newMusicPlayerState, playOrder[index])) {
+      let attempts = 0;
+      while (!characterInPlaylist(newMusicPlayerState, playOrder[index]) && attempts < playOrder.length) {
         // console.log(playOrder[index], "not in playlist");
         index = (index + 1) % playOrder.length;
+        attempts++;
+      }
+      if (attempts >= playOrder.length) {
+        console.warn("No valid character found in playlist");
+        setMusicPlayerState(newMusicPlayerState);
+        return;
       }
       playMusicOfCharacter(playOrder[index], {}, newMusicPlayerState);
     } else {

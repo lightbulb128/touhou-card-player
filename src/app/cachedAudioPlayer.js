@@ -70,7 +70,7 @@ const CachedAudioPlayer = ({ src, onFetched, onLoaded, globalRefs }) => {
           onLoaded();
         }}
       />
-    </div>, prepareAudio
+    </div>
   ]
 };
 

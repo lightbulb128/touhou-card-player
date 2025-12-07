@@ -352,7 +352,7 @@ export default function Page() {
         return [previousIndex, previousCharacter];
       }
     }
-    return null;
+    return [null, null];
   }
   const findFirstCharacterInPlaylist = (musicPlayerState) => {
     let playOrder = musicPlayerState.playOrder;
@@ -408,6 +408,10 @@ export default function Page() {
 
   const playNextMusic = (additionalToSet = {}) =>{
     let [_, nextCharacter] = findNextCharacterInPlaylist(musicPlayerState, musicPlayerState.currentPlaying)
+    if (nextCharacter === null) {
+      console.warn("No next character found in playlist");
+      return;
+    }
     playMusicOfCharacter(nextCharacter, additionalToSet)
     if (nextMusicCallback.current) {
       nextMusicCallback.current();
@@ -435,6 +439,10 @@ export default function Page() {
   
   const onPreviousMusicClick = () => {
     let [_, previousCharacter] = findPreviousCharacterInPlaylist(musicPlayerState, musicPlayerState.currentPlaying)
+    if (previousCharacter === null) {
+      console.warn("No previous character found in playlist");
+      return;
+    }
     playMusicOfCharacter(previousCharacter);
   }
 
@@ -465,6 +473,10 @@ export default function Page() {
       temporarySkip: temporarySkip,
     }
     let currentPlaying = findFirstCharacterInPlaylist(newMusicPlayerState);
+    if (currentPlaying === null) {
+      console.warn("No valid character found in playlist");
+      return;
+    }
     newMusicPlayerState.currentPlaying = currentPlaying;
     setMusicPlayerState(newMusicPlayerState);
     
