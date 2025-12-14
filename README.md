@@ -1,4 +1,13 @@
+# New version is available!
+
+Please visit the new version at [touhou-card-player-v3](https://lightbulb128.github.io/touhou-card-player-v3/)!
+This new version has a lot of new features, including:
+- Multiplayer online mode!
+- Music source selection!
+- Chinese and English language support!
+
 # Touhou Card Player
+
 Well, this one does as the name says.
 
 - Live webpage deployed at [Github Pages](https://lightbulb128.github.io/touhou-card-player/). 

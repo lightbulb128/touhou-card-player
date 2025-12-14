@@ -627,8 +627,8 @@ export default function Page() {
             }, "warning")}
             {createTabButton(2, tabValue, "设定")}
             {!isSmallScreen && createTabButton(3, tabValue, "游戏")}
-            {createFunButton("源码", () => {
-              window.open("https://github.com/lightbulb128/touhou-card-player");
+            {createFunButton("新版", () => {
+              window.open("https://lightbulb128.github.io/touhou-card-player-v3/?locale=zh");
             }, "primary", {
               textDecoration: "underline"
             })}
